@@ -24,7 +24,7 @@ curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh
 ```
 
 ### Install nix-darwin
-Just like in NixOS we have both /etc/nix and /etc/nixos, here we'll have /etc/nix and /etc/nix-darwin
+Just like in NixOS we have both `/etc/nix` and `/etc/nixos`, here we'll have `/etc/nix` and `/etc/nix-darwin`
 We will work in nix-darwin
 ```
 sudo mkdir /etc/nix-darwin
@@ -36,19 +36,21 @@ cd /etc/nix-darwin
 sudo nix run nix-darwin/nix-darwin-26.05#darwin-rebuild --extra-experimental-features flakes --extra-experimental-features nix-command -- switch --flake ./flake.nix
 ```
 
-### Clone this repo and put in /etc/nix-darwin
+### Clone this repo and put in `/etc/nix-darwin`
 
 ### Ajudst flake.nix
 Change the hostname in `darwinConfigurations."<hostname>" = nix-darwin.lib.darwinSystem {`
+
 (get the hostname by running `scutil --get LocalHostName`)
+
 And change the other `specialArgs` accordingly
 
 
-# Rebuild with
+### Rebuild with
 (have it pointing to the directory with the flake, not the flake itself)
 ```
 sudo darwin-rebuild switch --flake /etc/nix-darwin
-
+```
 
 
 
